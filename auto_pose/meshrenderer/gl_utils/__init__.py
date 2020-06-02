@@ -8,12 +8,12 @@ try:
 except:
   IN_COLAB = False
 
-if os.environ.get('PYOPENGL_PLATFORM', None) == 'egl' or IN_COLAB or True:
-    print('using egl')
-    from .egl_offscreen_context import OffscreenContext
-else:
-    print('using glfw')
-    from .glfw_offscreen_context import OffscreenContext
+# if os.environ.get('PYOPENGL_PLATFORM', None) == 'egl' or IN_COLAB or True:
+print('using egl')
+from .egl_offscreen_context import OffscreenContext
+# else:
+#     print('using glfw')
+#     from .glfw_offscreen_context import OffscreenContext
 from .fbo import Framebuffer
 from .renderbuffer import Renderbuffer, RenderbufferMultisample
 from .texture import Texture, TextureMultisample, Texture1D, Texture3D
