@@ -1,7 +1,14 @@
 
 #from .offscreen_context import OffscreenContext
 import os
-if os.environ.get('PYOPENGL_PLATFORM', None) == 'egl':
+
+try:
+  import google.colab
+  IN_COLAB = True
+except:
+  IN_COLAB = False
+
+if os.environ.get('PYOPENGL_PLATFORM', None) == 'egl' or IN_COLAB:
     print('using egl')
     from .egl_offscreen_context import OffscreenContext
 else:
