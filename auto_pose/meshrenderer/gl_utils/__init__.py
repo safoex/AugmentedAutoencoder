@@ -8,7 +8,7 @@ try:
 except:
   IN_COLAB = False
 
-if os.environ.get('PYOPENGL_PLATFORM', None) == 'egl' or IN_COLAB:
+if os.environ.get('PYOPENGL_PLATFORM', None) == 'egl' or IN_COLAB or True:
     print('using egl')
     from .egl_offscreen_context import OffscreenContext
 else:
