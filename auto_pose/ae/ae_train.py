@@ -80,7 +80,9 @@ def main():
     num_iter = args.getint('Training', 'NUM_ITER') if not debug_mode else 100000
     save_interval = args.getint('Training', 'SAVE_INTERVAL')
     model_type = args.get('Dataset', 'MODEL')
-
+    
+    print("there will be %d iterations" % num_iter)
+    
     if model_type=='dsprites':
         dataset.get_sprite_training_images(args)
     else:
@@ -120,6 +122,7 @@ def main():
 
         queue.start(sess)
         for i in range(ae.global_step.eval(), num_iter):
+            print("step %d" % i)
             if not debug_mode:
                 sess.run(train_op)
                 if i % 10 == 0:
