@@ -116,7 +116,7 @@ def main():
 
         if not debug_mode:
             print('Training with %s model' % args.get('Dataset','MODEL'), os.path.basename(args.get('Paths','MODEL_PATH')))
-            bar.start()
+        bar.start()
 
         queue.start(sess)
         for i in range(ae.global_step.eval(), num_iter):
