@@ -40,9 +40,9 @@ def main():
 	if not os.path.exists(eval_cfg_path):
 		eval_cfg_template_path = os.path.join(this_dir, 'cfg_eval')
 		shutil.copytree(eval_cfg_template_path, eval_cfg_path)
-	if not os.path.exists(m3_cfg_path):
-		m3_cfg_template_path = os.path.join(this_dir, 'cfg_m3vision')
-		shutil.copytree(m3_cfg_template_path, m3_cfg_path)
+	# if not os.path.exists(m3_cfg_path):
+	# 	m3_cfg_template_path = os.path.join(this_dir, 'cfg_m3vision')
+	# 	shutil.copytree(m3_cfg_template_path, m3_cfg_path)
 		
 	if not os.path.exists(experiments_path):
 		os.makedirs(experiments_path)
