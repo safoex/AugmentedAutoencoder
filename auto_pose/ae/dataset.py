@@ -536,8 +536,8 @@ class Dataset(object):
     def preprocess_aae(self, batch_x, masks_x, batch_y):
         rand_idcs_bg = np.random.choice(self.noof_bg_imgs, len(batch_x), replace=False)
         rand_vocs = self.bg_imgs[rand_idcs_bg]
-	print(rand_vocs.shape)
-	print(masks_x.shape)
+	    print(rand_vocs.shape)
+	    print(masks_x.shape)
         batch_x[masks_x] = rand_vocs[masks_x]
         batch_x = self._aug.augment_images(batch_x)
 
