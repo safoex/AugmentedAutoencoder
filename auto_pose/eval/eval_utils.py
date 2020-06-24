@@ -29,8 +29,8 @@ def get_gt_scene_crops(scene_id, eval_args, train_args, load_gt_masks=False):
     W_AE = train_args.getint('Dataset','W')
 
     cfg_string = str([scene_id] + eval_args.items('DATA') + eval_args.items('BBOXES') + [H_AE])
-    cfg_string = cfg_string.encode('utf-8')
-    current_config_hash = hashlib.md5(cfg_string).hexdigest()
+    # cfg_string = cfg_string.encode('utf-8')
+    current_config_hash = hashlib.md5(cfg_string.encode('utf-8')).hexdigest()
 
     current_file_name = os.path.join(dataset_path, current_config_hash + '.npz')
 
@@ -42,6 +42,8 @@ def get_gt_scene_crops(scene_id, eval_args, train_args, load_gt_masks=False):
         bb_scores = data['bb_scores'].item()
         bb_vis = data['visib_gt'].item()
         bbs = data['bbs'].item()
+
+    # print(current_file_name)
         
     if not os.path.exists(current_file_name) or len(test_img_crops) == 0 or len(test_img_depth_crops) == 0:
         test_imgs = load_scenes(scene_id, eval_args)
@@ -309,11 +311,11 @@ def get_all_scenes_for_obj(eval_args):
     
 
     cfg_string = str(dataset_name)
-    current_config_hash = hashlib.md5(cfg_string).hexdigest()
+    current_config_hash = hashlib.md5(cfg_string.encode('utf-8')).hexdigest()
     current_file_name = os.path.join(dataset_path, current_config_hash + '.npy')
 
     if os.path.exists(current_file_name):
-        obj_scene_dict = np.load(current_file_name).item()
+        obj_scene_dict = np.load(current_file_name, allow_pickle=True).item()
     else:    
         p = dataset_params.get_dataset_params(dataset_name, model_type='', train_type='', test_type=cam_type, cam_type=cam_type)
         

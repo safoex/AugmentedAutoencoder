@@ -101,7 +101,7 @@ def main():
     # for test_class in test_classes:
     models = sorted(glob.glob(os.path.join(base_path, test_class, split, '*_normalized.off')))
 
-    if split == 'test': or split=='train':
+    if split == 'test' or split=='train':
         if os.path.exists(os.path.dirname(models[0])):
             dataset._kw['model_path'] = models[0:num_obj]
         else:

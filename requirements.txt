@@ -8,3 +8,4 @@ progressbar
 tensorflow-gpu
 opencv-python
 numpy==1.17
+sklearn
